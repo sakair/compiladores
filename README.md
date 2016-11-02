@@ -7,7 +7,7 @@ O projeto possui 3 classes e 1 arquivo .flex que contém todos os símbolos da l
  - A classe analisador, quando executado gera um arquivo Lexer.java que possui o código do analisador léxico gerado.
  - Para se gerar a classe Lexer.java, tem de especificar o caminho em que o arquivo .flex se encontra.
 
-Para a segunda parte, tem de se gerar uma parse tree a partir de uma gramática, que no meu caso será a criação de uma função na linguagem Ruby. 
+Para a segunda parte, tem de se gerar uma parse tree a partir de uma gramática, que no meu caso será a criação de uma função que imprime um texto na linguagem Ruby. É uma gramática simples, pois se eu fosse abordar tudo o que a linguagem pode fazer o projeto iria ficar muito extenso e de difícil entendimento. 
 Nesta etapa houve uma mudança no uso da ferramenta a ser utilizada. O JFlex foi substituído pelo ANTLR4, pelo fato de ser mais fácil gerar uma parse tree por esta ferramenta.
 
 Para fazer a intalação da ferramenta tanto no linux quanto no Windows um tutorial foi disponibilizado no próprio GitHub:
