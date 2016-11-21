@@ -1,0 +1,17 @@
+// $ANTLR 2.7.7 (2006-11-01): Lexer.g -> DecafScannerTokenTypes.txt$
+DecafScanner    // output token vocab name
+TK_def="def"=4
+TK_end="end"=5
+ID("an identifier")=6
+ATRIBUICAO("=")=7
+NUMERO("an number")=8
+SL_COMMENT=9
+CHAR=10
+STRING=11
+ESC=12
+OP_SOMA=13
+OP_DIV=14
+PAR_ESQ=15
+PAR_DIR=16
+PULA_LINHA=17
+WS_=18
