@@ -51,7 +51,10 @@ class Main {
                                                         break;
                                                 case DecafScannerTokenTypes.PAR_DIR:
                                                         type = "PAR_DIR";
-                                                        break;        
+                                                        break;   
+						case DecafScannerTokenTypes.PULA_LINHA:
+		        				type = "QUEBRA_LINHA";
+		        				break;		
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
