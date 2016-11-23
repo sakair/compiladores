@@ -52,9 +52,18 @@ class Main {
                                                 case DecafScannerTokenTypes.PAR_DIR:
                                                         type = "PAR_DIR";
                                                         break;   
-						case DecafScannerTokenTypes.PULA_LINHA:
-		        				type = "QUEBRA_LINHA";
-		        				break;		
+						                        case DecafScannerTokenTypes.PULA_LINHA:
+		        				                        type = "QUEBRA_LINHA";
+		        				                        break;		
+                                                case DecafScannerTokenTypes.ATRIBUICAO:
+                                                        type = "ATRIBUICAO";
+                                                        break;     
+                                                case DecafScannerTokenTypes.ABRE_ASPA:
+                                                        type = "ABRE_ASPA";
+                                                        break;           
+                                                case DecafScannerTokenTypes.FECHA_ASPA:
+                                                        type = "FECHA_ASPA";
+                                                        break;                  
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}

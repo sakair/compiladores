@@ -41,6 +41,8 @@ public DecafScanner(LexerSharedInputState state) {
 	setCaseSensitive(true);
 	literals = new Hashtable();
 	literals.put(new ANTLRHashString("end", this), new Integer(5));
+	literals.put(new ANTLRHashString("int", this), new Integer(6));
+	literals.put(new ANTLRHashString("string", this), new Integer(7));
 	literals.put(new ANTLRHashString("def", this), new Integer(4));
 }
 
@@ -92,12 +94,6 @@ tryAgain:
 					theRetToken=_returnToken;
 					break;
 				}
-				case '"':
-				{
-					mSTRING(true);
-					theRetToken=_returnToken;
-					break;
-				}
 				case '+':  case '-':
 				{
 					mOP_SOMA(true);
@@ -133,8 +129,20 @@ tryAgain:
 						mSL_COMMENT(true);
 						theRetToken=_returnToken;
 					}
+					else if ((LA(1)=='"') && ((LA(2) >= '\u0000' && LA(2) <= '\u007f'))) {
+						mSTRING(true);
+						theRetToken=_returnToken;
+					}
 					else if ((LA(1)=='*'||LA(1)=='/') && (true)) {
 						mOP_DIV(true);
+						theRetToken=_returnToken;
+					}
+					else if ((LA(1)=='"') && (true)) {
+						mABRE_ASPA(true);
+						theRetToken=_returnToken;
+					}
+					else if ((LA(1)=='"') && (true)) {
+						mFECHA_ASPA(true);
 						theRetToken=_returnToken;
 					}
 				else {
@@ -533,6 +541,32 @@ tryAgain:
 		int _saveIndex;
 		
 		match(')');
+		if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
+			_token = makeToken(_ttype);
+			_token.setText(new String(text.getBuffer(), _begin, text.length()-_begin));
+		}
+		_returnToken = _token;
+	}
+	
+	public final void mABRE_ASPA(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
+		int _ttype; Token _token=null; int _begin=text.length();
+		_ttype = ABRE_ASPA;
+		int _saveIndex;
+		
+		match('"');
+		if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
+			_token = makeToken(_ttype);
+			_token.setText(new String(text.getBuffer(), _begin, text.length()-_begin));
+		}
+		_returnToken = _token;
+	}
+	
+	public final void mFECHA_ASPA(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
+		int _ttype; Token _token=null; int _begin=text.length();
+		_ttype = FECHA_ASPA;
+		int _saveIndex;
+		
+		match('"');
 		if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
 			_token = makeToken(_ttype);
 			_token.setText(new String(text.getBuffer(), _begin, text.length()-_begin));

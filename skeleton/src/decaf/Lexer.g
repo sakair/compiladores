@@ -16,6 +16,8 @@ tokens
 {
   "def";
   "end";
+  "int";
+  "string";
 }
 
 
@@ -39,6 +41,8 @@ OP_SOMA : '+' | '-' ;
 OP_DIV : '*' | '/' ;
 PAR_ESQ : '(';
 PAR_DIR : ')';
+ABRE_ASPA : '"';
+FECHA_ASPA : '"';
 PULA_LINHA : '\n';
 
 WS_ : (' ' | '\t' | '\r' {newline();}) {_ttype = Token.SKIP; };

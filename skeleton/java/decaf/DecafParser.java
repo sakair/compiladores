@@ -168,6 +168,11 @@ public DecafParser(ParserSharedInputState state) {
 				match(NUMERO);
 				expr_AST = (AST)currentAST.root;
 			}
+			else if ((LA(1)==TK_int||LA(1)==TK_string)) {
+				expr_atribuicao();
+				astFactory.addASTChild(currentAST, returnAST);
+				expr_AST = (AST)currentAST.root;
+			}
 			else {
 				throw new NoViableAltException(LT(1), getFilename());
 			}
@@ -180,6 +185,77 @@ public DecafParser(ParserSharedInputState state) {
 		returnAST = expr_AST;
 	}
 	
+	public final void expr_atribuicao() throws RecognitionException, TokenStreamException {
+		
+		returnAST = null;
+		ASTPair currentAST = new ASTPair();
+		AST expr_atribuicao_AST = null;
+		
+		try {      // for error handling
+			switch ( LA(1)) {
+			case TK_int:
+			{
+				AST tmp21_AST = null;
+				tmp21_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp21_AST);
+				match(TK_int);
+				AST tmp22_AST = null;
+				tmp22_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp22_AST);
+				match(ID);
+				AST tmp23_AST = null;
+				tmp23_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp23_AST);
+				match(ATRIBUICAO);
+				AST tmp24_AST = null;
+				tmp24_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp24_AST);
+				match(NUMERO);
+				expr_atribuicao_AST = (AST)currentAST.root;
+				break;
+			}
+			case TK_string:
+			{
+				AST tmp25_AST = null;
+				tmp25_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp25_AST);
+				match(TK_string);
+				AST tmp26_AST = null;
+				tmp26_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp26_AST);
+				match(ID);
+				AST tmp27_AST = null;
+				tmp27_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp27_AST);
+				match(ATRIBUICAO);
+				AST tmp28_AST = null;
+				tmp28_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp28_AST);
+				match(ABRE_ASPA);
+				AST tmp29_AST = null;
+				tmp29_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp29_AST);
+				match(ID);
+				AST tmp30_AST = null;
+				tmp30_AST = astFactory.create(LT(1));
+				astFactory.addASTChild(currentAST, tmp30_AST);
+				match(FECHA_ASPA);
+				expr_atribuicao_AST = (AST)currentAST.root;
+				break;
+			}
+			default:
+			{
+				throw new NoViableAltException(LT(1), getFilename());
+			}
+			}
+		}
+		catch (RecognitionException ex) {
+			reportError(ex);
+			recover(ex,_tokenSet_1);
+		}
+		returnAST = expr_atribuicao_AST;
+	}
+	
 	
 	public static final String[] _tokenNames = {
 		"<0>",
@@ -188,6 +264,8 @@ public DecafParser(ParserSharedInputState state) {
 		"NULL_TREE_LOOKAHEAD",
 		"\"def\"",
 		"\"end\"",
+		"\"int\"",
+		"\"string\"",
 		"an identifier",
 		"=",
 		"an number",
@@ -199,7 +277,10 @@ public DecafParser(ParserSharedInputState state) {
 		"OP_DIV",
 		"PAR_ESQ",
 		"PAR_DIR",
-		"PULA_LINHA"
+		"ABRE_ASPA",
+		"FECHA_ASPA",
+		"PULA_LINHA",
+		"WS_"
 	};
 	
 	protected void buildTokenTypeASTClassMap() {
@@ -212,7 +293,7 @@ public DecafParser(ParserSharedInputState state) {
 	}
 	public static final BitSet _tokenSet_0 = new BitSet(mk_tokenSet_0());
 	private static final long[] mk_tokenSet_1() {
-		long[] data = { 131072L, 0L};
+		long[] data = { 2097152L, 0L};
 		return data;
 	}
 	public static final BitSet _tokenSet_1 = new BitSet(mk_tokenSet_1());

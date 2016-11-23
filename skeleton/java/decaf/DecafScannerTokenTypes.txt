@@ -2,16 +2,20 @@
 DecafScanner    // output token vocab name
 TK_def="def"=4
 TK_end="end"=5
-ID("an identifier")=6
-ATRIBUICAO("=")=7
-NUMERO("an number")=8
-SL_COMMENT=9
-CHAR=10
-STRING=11
-ESC=12
-OP_SOMA=13
-OP_DIV=14
-PAR_ESQ=15
-PAR_DIR=16
-PULA_LINHA=17
-WS_=18
+TK_int="int"=6
+TK_string="string"=7
+ID("an identifier")=8
+ATRIBUICAO("=")=9
+NUMERO("an number")=10
+SL_COMMENT=11
+CHAR=12
+STRING=13
+ESC=14
+OP_SOMA=15
+OP_DIV=16
+PAR_ESQ=17
+PAR_DIR=18
+ABRE_ASPA=19
+FECHA_ASPA=20
+PULA_LINHA=21
+WS_=22
